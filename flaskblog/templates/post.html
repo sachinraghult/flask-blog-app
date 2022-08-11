@@ -9,7 +9,11 @@
       src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}"
       style="width: 50px; height: 50px"
     />
-    <a href="#" style="text-decoration: none">{{ post.author.username }}</a>
+    <a
+      href="{{ url_for('user_posts', username=post.author.username) }}"
+      style="text-decoration: none"
+      >{{ post.author.username }}</a
+    >
     <small class="text-muted"
       >&nbsp;&nbsp;<i>{{ post.date_posted.strftime('%Y-%m-%d') }}</i></small
     >
