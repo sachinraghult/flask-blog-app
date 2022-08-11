@@ -10,7 +10,7 @@
       style="width: 50px; height: 50px"
     />
     <a
-      href="{{ url_for('user_posts', username=post.author.username) }}"
+      href="{{ url_for('users.user_posts', username=post.author.username) }}"
       style="text-decoration: none"
       >{{ post.author.username }}</a
     >
@@ -21,7 +21,7 @@
   <div class="card-body text-secondary">
     <h5 class="card-title">
       <a
-        href="{{ url_for('post', post_id=post.id) }}"
+        href="{{ url_for('posts.post', post_id=post.id) }}"
         style="text-decoration: none"
         >{{ post.title }}</a
       >
@@ -32,11 +32,13 @@
 {% endfor %} {% for page_num in posts.iter_pages(left_edge=1, right_edge=1,
 left_current=1, right_current=2) %} {% if page_num %} {% if page_num ==
 posts.page %}
-<a class="btn btn-info mb-4" href="{{ url_for('home', page=page_num) }}"
+<a class="btn btn-info mb-4" href="{{ url_for('main.home', page=page_num) }}"
   >{{ page_num }}</a
 >
 {% else %}
-<a class="btn btn-outline-info mb-4" href="{{ url_for('home', page=page_num) }}"
+<a
+  class="btn btn-outline-info mb-4"
+  href="{{ url_for('main.home', page=page_num) }}"
   >{{ page_num }}</a
 >
 {% endif %} {% else %} ... {% endif %} {% endfor %} {% endblock content %}
